@@ -11,8 +11,22 @@
 <body>
     <div class="container text-center">
         <h2 class='text-light bg-dark'>Welcome to the Real World</h2>
-        <h3><a href="/actors">Actors</a></h3>
-        <h3><a href="/movies">Movies</a></h3>
+        <h3>{{ movie.title }}</h3>
+
+        <table class="mx-auto">
+            <tr>
+                <th>Role</th>
+                <th>Actor</th>
+            </tr>
+
+
+            {% for role in movie.cast %}
+                <tr>
+                    <td>{{ role.role }}</td>
+                    <td><a href="/actors/{{role.actor_id}}">{{ role.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 </body>
 </html>

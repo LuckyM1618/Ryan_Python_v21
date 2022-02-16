@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- If using Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h2 class='text-light bg-dark'>Welcome to the Real World</h2>
+        <!-- resize for main view profile, fixed width in card -->
+        <img  style="height: 200px; width: 200px; object-fit: cover;" src="../static/img/{{actor.profile_img}}" alt="actor profile pic">
+        <h3>{{ actor.name }}</h3>
+
+        {% if actor.roles[0]['id'] != None %}
+        <table class="mx-auto">
+            <tr>
+                <th>Title</th>
+                <th>Release Date</th>
+                <th>Role</th>
+            </tr>
+
+            {% for film in actor.roles %}
+                <tr>
+                    <td><a href="/movies/{{film.movie_id}}">{{ film.title }}</a></td>
+                    <td>{{ film.release_date }}</td>
+                    <td>{{ film.role }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>

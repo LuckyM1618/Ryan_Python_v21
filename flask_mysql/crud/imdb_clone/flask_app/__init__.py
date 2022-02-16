@@ -1,4 +1,4 @@
 from flask import Flask
 
 app = Flask(__name__)
-app.secret_key = "Sphinx of Black Quartz, Judge My Vow"
+app.secret_key = "Sphinx of Black Quartz, Judge My Vow!"

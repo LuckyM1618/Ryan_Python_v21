@@ -10,10 +10,29 @@
 </head>
 <body>
     <div class="container text-center">
-        <h2>Actors:</h2>
-        {% for actor in actors %}
-            <h4 class="text-center">{{actor.name}}</h4>
-        {% endfor %}
+        <div class="row">
+            <div class="col-4 offset-2">
+                <h2>Actors:</h2>
+                {% for actor in actors %}
+                    <h4 class="text-center"><a href="/actors/{{actor.id}}">{{actor.name}}</a></h4>
+                {% endfor %}
+            </div>
+
+            <form class="col-4" action="/actors/create" method="post">
+                <h3>Add A New Actor</h3>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" name="age" id="age">
+                </div>
+
+                <input type="submit" value="Add">
+            </form>
+        </div>
     </div>
 </body>
 </html>

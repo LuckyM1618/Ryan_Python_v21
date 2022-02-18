@@ -2,6 +2,7 @@ from flask_app import app
 # from venv import create --- verify what this one does
 from flask import render_template, request, redirect
 from flask_app.models.movie import Movie
+from flask_app.models.actor import Actor
 
 @app.route('/movies')
 def all_movies():
@@ -16,8 +17,9 @@ def one_movie(movie_id):
     }
 
     movie = Movie.get_movie_with_cast(data)
+    all_actors = Actor.get_all()
 
-    return render_template('one_movie.html', movie=movie)
+    return render_template('one_movie.html', movie=movie, all_actors=all_actors)
 
 @app.route('/movies/create', methods=['POST'])
 def create_movie():

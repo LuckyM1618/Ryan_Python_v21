@@ -1,3 +1,4 @@
+from sqlite3 import connect
 from flask_app.config.mysqlconnection import connectToMySQL
 
 class Cast:
@@ -16,3 +17,11 @@ class Cast:
 
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+
+    @classmethod
+    def create(cls, data):
+        query = """
+        INSERT INTO cast (movie_id, actor_id, role, created_at, updated_at) VALUES (%(movie_id)s, %(actor_id)s, %(role)s, NOW(), NOW());
+        """
+
+        return connectToMySQL(cls.db).query_db(query,data)

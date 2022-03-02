@@ -16,6 +16,22 @@
         <h3>{{ actor.name }}</h3>
         <h4>Age: {{ actor.age }}</h4>
 
+        <form class="col-4 offset-4" action="/actors/update" method="post">
+            <input type="hidden" name="actor_id" value="{{actor.id}}">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="{{actor.name}}">
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" value="{{actor.age}}">
+            </div>
+
+            <input type="submit" value="Update">
+        </form>
+
         <h3>Roles</h3>
         {% if actor.roles[0]['id'] != None %}
         <table class="mx-auto">

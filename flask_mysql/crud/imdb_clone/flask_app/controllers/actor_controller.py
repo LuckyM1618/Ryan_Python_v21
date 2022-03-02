@@ -38,3 +38,27 @@ def create_actor():
     new_actor_id = Actor.create(data)
 
     return redirect(f'/actors/{new_actor_id}')
+
+@app.route('/actors/<int:actor_id>/edit')
+def edit_actor(actor_id):
+    data = {
+        'id' : actor_id
+    }
+
+    actor = Actor.get_actor_with_roles(data)
+    all_movies = Movie.get_all()
+
+    return render_template('edit_actor.html', actor=actor, all_movies=all_movies)
+
+@app.route('/actors/update', methods=['POST'])
+def update_actor():
+    data = {
+        'actor_id' : request.form['actor_id'],
+        'name' : request.form['name'],
+        'age' : request.form['age']
+    }
+
+    Actor.update(data)
+    actor_id = data['actor_id']
+
+    return redirect(f'/actors/{actor_id}/edit')

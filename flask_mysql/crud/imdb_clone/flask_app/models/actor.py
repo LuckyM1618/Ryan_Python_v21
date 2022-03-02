@@ -65,3 +65,9 @@ class Actor:
         """
 
         return connectToMySQL(cls.db).query_db(query,data)
+
+    @classmethod
+    def update(cls, data):
+        query = "UPDATE actors SET name = %(name)s, age = %(age)s, updated_at = NOW() WHERE id = %(actor_id)s;"
+
+        return connectToMySQL(cls.db).query_db(query, data)

@@ -61,4 +61,4 @@ def update_actor():
     Actor.update(data)
     actor_id = data['actor_id']
 
-    return redirect(f'/actors/{actor_id}/edit')
+    return redirect(f'/actors/{actor_id}')

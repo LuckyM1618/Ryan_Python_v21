@@ -32,3 +32,28 @@ def create_movie():
     new_movie_id = Movie.create(data)
 
     return redirect(f'/movies/{new_movie_id}')
+
+@app.route('/movies/<int:movie_id>/edit')
+def edit_movie(movie_id):
+    data = {
+        'id' : movie_id
+    }
+
+    movie = Movie.get_movie_with_cast(data)
+    all_actors = Actor.get_all()
+
+    return render_template('edit_movie.html', movie = movie, all_actors = all_actors)
+
+@app.route('/movies/update', methods=['POST'])
+def update_movie():
+    data = {
+        'movie_id' : request.form['movie_id'],
+        'title' : request.form['title'],
+        'release_date' : request.form['release_date'],
+        'description' : request.form['description'],
+    }
+
+    Movie.update(data)
+    movie_id = data['movie_id']
+
+    return redirect(f'/movies/{movie_id}')

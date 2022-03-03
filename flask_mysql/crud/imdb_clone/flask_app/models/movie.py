@@ -67,3 +67,9 @@ class Movie:
         """
 
         return connectToMySQL(cls.db).query_db(query,data)
+
+    @classmethod
+    def update(cls,data):
+        query = "UPDATE movies SET title = %(title)s, release_date = %(release_date)s, description = %(description)s, updated_at = NOW() WHERE (id = %(movie_id)s);"
+
+        return connectToMySQL(cls.db).query_db(query, data)

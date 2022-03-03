@@ -12,9 +12,28 @@
     <div class="container text-center">
         <h2 class='text-light bg-dark'>Welcome to the Real World</h2>
         <h3>{{ movie.title }}</h3>
-        <a href="/movies/{{movie.id}}/edit">Edit</a>
         <h4>{{ movie.release_date }}</h4>
-        <p>{{ movie.description }}</p>
+
+        <form class="col-4 offset-4" action="/movies/update" method="post">
+            <input type="hidden" name="movie_id" value="{{movie.id}}">
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="{{movie.title}}">
+            </div>
+
+            <div class="form-group">
+                <label for="release_date">Release Date</label>
+                <input type="date" name="release_date" id="release_date" value="{{movie.release_date}}">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="textarea" name="description" id="description" value="{{movie.description}}">
+            </div>
+
+            <input type="submit" value="Add">
+        </form>
 
         <table class="mx-auto">
             <tr>

@@ -15,6 +15,7 @@
         <a href="/movies/{{movie.id}}/edit">Edit</a>
         <h4>{{ movie.release_date }}</h4>
         <p>{{ movie.description }}</p>
+        <p><a href="/movies/{{movie.id}}/edit">Edit</a> | <a href="/movies/{{movie.id}}/delete">Delete</a></p>
 
         <table class="mx-auto">
             <tr>
@@ -27,6 +28,7 @@
                 <tr>
                     <td>{{ role.role }}</td>
                     <td><a href="/actors/{{role.actor_id}}">{{ role.name }}</a></td>
+                    <td><a href="/cast/{{role.id}}/delete/movie/{{movie.id}}">Delete</a></td>
                 </tr>
             {% endfor %}
         </table>

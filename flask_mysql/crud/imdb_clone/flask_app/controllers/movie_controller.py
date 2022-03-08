@@ -57,3 +57,13 @@ def update_movie():
     movie_id = data['movie_id']
 
     return redirect(f'/movies/{movie_id}')
+
+@app.route('/movies/<int:id>/delete')
+def delete_movie(id):
+    data = {
+        'id' : id
+    }
+
+    Movie.delete(data)
+
+    return redirect('/movies')

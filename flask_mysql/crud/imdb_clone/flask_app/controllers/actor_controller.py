@@ -62,3 +62,13 @@ def update_actor():
     actor_id = data['actor_id']
 
     return redirect(f'/actors/{actor_id}')
+
+@app.route('/actors/<int:id>/delete')
+def delete_actor(id):
+    data = {
+        'id' : id
+    }
+
+    Actor.delete(data)
+
+    return redirect('/actors')

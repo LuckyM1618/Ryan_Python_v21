@@ -23,7 +23,7 @@ class MySQLConnection:
         with self.connection.cursor() as cursor:
             try:
                 query = cursor.mogrify(query, data)
-                print("Running Query:", query)
+                print("Running Query:", query, flush=True)
      
                 cursor.execute(query, data)
                 if query.lower().find("insert") >= 0:
@@ -41,7 +41,7 @@ class MySQLConnection:
 
             except Exception as e:
                 # if the query fails the method will return FALSE
-                print("Something went wrong", e)
+                print("Something went wrong", e, flush=True)
                 return False
             finally:
                 # close the connection

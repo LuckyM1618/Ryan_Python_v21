@@ -25,3 +25,9 @@ class Cast:
         """
 
         return connectToMySQL(cls.db).query_db(query,data)
+
+    @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM cast WHERE (id = %(id)s);"
+
+        return connectToMySQL(cls.db).query_db(query,data)
